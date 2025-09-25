@@ -1,0 +1,5 @@
+Flask
+python-dotenv  #pip install python-dotenv - use this command to install
+openai
+sqlalchemy
+psycopg2-binary  # if using PostgreSQL
