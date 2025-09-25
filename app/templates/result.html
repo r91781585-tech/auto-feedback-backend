@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="feedback-card">
+            <h2>✨ Feedback for {{ student_name }}</h2>
+            
+            <div class="mb-3">
+                <h5>Performance Scores:</h5>
+                {% for skill, score in scores.items() %}
+                    <span class="score-badge">
+                        {{ skill.replace('_', ' ').title() }}: {{ score }}/10
+                    </span>
+                {% endfor %}
+            </div>
+
+            <div class="mt-4">
+                <h5>📝 Generated Feedback:</h5>
+                <div class="bg-white text-dark p-4 rounded">
+                    <p class="mb-0">{{ feedback }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('main.index') }}" class="btn btn-primary me-2">
+                🔄 Generate Another
+            </a>
+            <a href="{{ url_for('main.feedback_history') }}" class="btn btn-outline-primary">
+                📚 View History
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
