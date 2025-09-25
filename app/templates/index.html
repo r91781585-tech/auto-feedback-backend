@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">🎯 Generate Student Feedback</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('main.generate_feedback_web') }}">
+                    <div class="mb-3">
+                        <label for="student_name" class="form-label">Student Name</label>
+                        <input type="text" class="form-control" id="student_name" name="student_name" required>
+                    </div>
+
+                    <h5 class="mb-3">Performance Scores (1-10)</h5>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="communication" class="form-label">Communication</label>
+                            <input type="number" class="form-control" id="communication" name="communication" 
+                                   min="1" max="10" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="teamwork" class="form-label">Teamwork</label>
+                            <input type="number" class="form-control" id="teamwork" name="teamwork" 
+                                   min="1" max="10" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="creativity" class="form-label">Creativity</label>
+                            <input type="number" class="form-control" id="creativity" name="creativity" 
+                                   min="1" max="10" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="critical_thinking" class="form-label">Critical Thinking</label>
+                            <input type="number" class="form-control" id="critical_thinking" name="critical_thinking" 
+                                   min="1" max="10" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="presentation" class="form-label">Presentation</label>
+                            <input type="number" class="form-control" id="presentation" name="presentation" 
+                                   min="1" max="10" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                        🚀 Generate Feedback
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h5>📊 API Usage</h5>
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>Endpoint:</strong> <code>POST /api/generate-feedback</code></p>
+                    <p><strong>Example:</strong></p>
+                    <pre class="bg-light p-3 rounded"><code>curl -X POST http://localhost:5000/api/generate-feedback \
+  -H "Content-Type: application/json" \
+  -d '{
+    "student_name": "John Doe",
+    "communication": 8,
+    "teamwork": 7,
+    "creativity": 9,
+    "critical_thinking": 6,
+    "presentation": 8
+  }'</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
